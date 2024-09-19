@@ -13,14 +13,39 @@
   <script src="{% static "js/js.js" %}"></script>
 </head>
 <body>
-  <div class="bg-info">
+  <div class="bg-info p-3">
     <header class="container bg-white rounded">
       <h1 class="text-center">Cars</h1>
     </header>
-    <footer>
+    <main class="container p-5">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Model</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for car in list %}
+          <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{car.model}}</td>
+            <td>{{car.brand}}</td>
+            <td>{{car.year}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </main>
+    <footer class="container p-5 m-2">
       <ul>
         <li>
           Photo by <a href="https://unsplash.com/@egor_vikhrev?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Egor Vikhrev</a> on <a href="https://unsplash.com/photos/white-vintage-car-in-garage-S0cqn0mZU0E?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+        </li>
+        <li>
+          Table from <a target="_blank" href="https://getbootstrap.com/docs/5.3/content/tables/#hoverable-rows">Bootrstrap</a>
         </li>
       </ul>
     </footer>
