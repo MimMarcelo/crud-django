@@ -34,7 +34,11 @@
           {% for car in list %}
           <tr>
             <th scope="row">{{ forloop.counter }}</th>
-            <td>{{car.model}}</td>
+            <td>
+              <a href="{% url "show" car.id %}">
+                {{car.model}}
+              </a>
+            </td>
             <td>{{car.brand}}</td>
             <td>{{car.year}}</td>
           </tr>

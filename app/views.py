@@ -24,6 +24,10 @@ def store(request):
     car.save()
     return redirect(index)
 
+def show(request, id):
+  car = Car.objects.get(pk=id)
+  return render(request, 'show.html', {'car': car})
+
 def upload_file(file):
   filename, extension = os.path.splitext(file.name)
   filename = str(datetime.now()) + extension
