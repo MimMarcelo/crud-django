@@ -27,7 +27,8 @@
         </ul>
         <div class="card-body">
           <a href="#" class="card-link">Editar</a>
-          <a href="#" class="card-link btn btn-danger">deletar</a>
+          <a href="{% url 'destroy' car.id %}"
+            class="card-link btn btn-danger">Deletar</a>
         </div>
       </div>
     </main>
