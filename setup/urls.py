@@ -20,7 +20,7 @@ from app.views import index, create, store, show, destroy, edit
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index),
+    path('', index, name='index'),
     path('create', create, name='create'),
     path('store', store, name='store'),
     path('show/<int:id>', show, name='show'),
