@@ -26,7 +26,8 @@
           <li class="list-group-item">Ano: {{car.year}}</li>
         </ul>
         <div class="card-body">
-          <a href="#" class="card-link">Editar</a>
+          <a href="{% url 'edit' car.id %}" 
+            class="card-link">Editar</a>
           <a href="{% url 'destroy' car.id %}"
             class="card-link btn btn-danger">Deletar</a>
         </div>

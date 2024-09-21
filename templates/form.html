@@ -21,25 +21,36 @@
         <div class="form group">
           <label for="txtModel">Modelo</label>
           <input type="text" name="model"
-            id="txtModel" class="form-control">
+            id="txtModel" class="form-control"
+            {% if car %}value="{{car.model}}"{% endif %}>
         </div>
         <div class="form group">
           <label for="txtBrand">Marca</label>
           <input type="text" name="brand"
-            id="txtBrand" class="form-control">
+            id="txtBrand" class="form-control"
+            {% if car %}value="{{car.brand}}"{% endif %}>
         </div>
         <div class="form group">
           <label for="txtYear">Ano</label>
           <input type="number" step="1" name="year"
-            id="txtYear" class="form-control">
+            id="txtYear" class="form-control"
+            {% if car %}value="{{car.year}}"{% endif %}>
         </div>
         <div class="form group">
           <label for="txtFilename">Imagem</label>
           <input type="file" name="file"
             id="txtFilename" class="form-control">
+            {% if car %}
+            <img src="{% static "img/" %}{{car.filename}}"
+              alt="Foto do {{car.model}}">
+            {% endif %}
         </div>
         <div>
-          <input type="submit" value="Cadastrar"
+          {% if car %}
+          <input type="hidden" name="id" value="{{car.id}}">
+          {% endif %}
+          <input type="submit"
+            value="{% if car %}Atualizar{% else %}Cadastrar{% endif %}"
             class="btn btn-primary">
         </div>
       </form>

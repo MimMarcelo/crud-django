@@ -15,13 +15,22 @@ def create(request):
 
 def store(request):
   if request.method == 'POST':
-    car = Car()
     data = request.POST
+    if data.get('id'):
+      car = Car.objects.get(pk=data.get('id'))
+    else:
+      car = Car()
+  
     car.model = data.get('model')
     car.brand = data.get('brand')
     car.year = data.get('year')
+    
     if request.FILES:
-      car.filename = upload_file(request.FILES['file'])
+      filename = upload_file(request.FILES['file'])
+      if car.filename != '':
+        delete_file(car.filename)
+      car.filename = filename
+    
     car.save()
     return redirect(index)
 
@@ -39,6 +48,10 @@ def destroy(request, id):
   )
   return redirect(index)
 
+def edit(request, id):
+  car = Car.objects.get(pk=id)
+  return render(request, 'form.html', {'car': car})
+  
 def upload_file(file):
   filename, extension = os.path.splitext(file.name)
   filename = str(datetime.now()) + extension
